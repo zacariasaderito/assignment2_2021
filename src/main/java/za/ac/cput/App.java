@@ -11,21 +11,19 @@ public class App
 {
 
     private static Map<Integer, String> m;
-    private static Collection c;
-    private static List l;
-    private static Set<String> s;
+    private static Collection<String> s;
+    private static List<String> l;
 
     public static void main( String[] args ) {
         list();
         map();
         set();
-//        collection();
     }
 
     public static void list() {
         System.out.println("\nList \n");
 
-        l = new ArrayList();
+        l = new ArrayList<String>();
 
         // Adding to the List
         l.add("Object 1");
@@ -39,31 +37,18 @@ public class App
         l.remove(3);
 
         // Finding object from the List
-        String getObject = (String) l.get(3);
+        String getObject = l.get(2);
         System.out.println("The object you are looking for is: " + getObject);
 
         // Iterate through the list
         for(int i = 0; i < l.size(); i++){
-            String element = (String) l.get(i);
+            String element = l.get(i);
             System.out.println(element);
         }
 
         // Clear the List
         l.clear();
 
-    }
-
-    public static void collection() {
-
-        // Adding to a Collection
-
-        // Removing from the Collection
-
-        // Finding object from the Collection
-
-        // Iterate through the Collection
-
-        // Clear the Collection
     }
 
     public static void map() {

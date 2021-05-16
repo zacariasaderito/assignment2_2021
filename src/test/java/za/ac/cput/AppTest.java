@@ -48,10 +48,6 @@ class AppTest {
     }
 
     @Test
-    void collection() {
-    }
-
-    @Test
     void map() {
 
         Map<Integer,String> m = new HashMap<>();
@@ -93,7 +89,7 @@ class AppTest {
     @Test
     void set() {
 
-        Set<String> s = new HashSet();
+        Collection<String> s = new HashSet();
 
         // Adding to the Set
         boolean added1 = s.add("Obj 1");
