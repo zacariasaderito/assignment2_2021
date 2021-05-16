@@ -17,12 +17,14 @@ public class App
 
     public static void main( String[] args ) {
         list();
-//        map();
-//        set();
+        map();
+        set();
 //        collection();
     }
 
     public static void list() {
+        System.out.println("\nList \n");
+
         l = new ArrayList();
 
         // Adding to the List
@@ -38,7 +40,7 @@ public class App
 
         // Finding object from the List
         String getObject = (String) l.get(3);
-        System.out.println("The object you are looking for is: " + getObject + "\n");
+        System.out.println("The object you are looking for is: " + getObject);
 
         // Iterate through the list
         for(int i = 0; i < l.size(); i++){
@@ -66,8 +68,9 @@ public class App
 
     public static void map() {
 
+        System.out.println("\nMap \n");
+
         m = new HashMap<>();
-        System.out.println( "Testing!\n" );
 
         // Adding to the Map
         m.put(1, "1st Object");
@@ -84,18 +87,19 @@ public class App
         String getObject1 = m.get(4);
 
         // Iterate through the Map
-
+        for (Map.Entry<Integer,String> entry: m.entrySet()) {
+            System.out.println(entry.getKey());
+            System.out.println(entry.getValue());
+        }
 
         // Clear the Map
         m.clear();
 
-        // display
-        System.out.println(getObject);
-        System.out.println(getObject1);
-
     }
 
     public static void set() {
+
+        System.out.println("\nSet \n");
 
         s = new HashSet();
 

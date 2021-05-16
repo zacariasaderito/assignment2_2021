@@ -9,12 +9,10 @@ import static org.junit.jupiter.api.Assertions.*;
 class AppTest {
 
 
-    @Test
-    void main() {
-    }
 
     @Test
     void list() {
+
         List<String> l = new ArrayList();
 
         // Adding to the List
@@ -26,22 +24,26 @@ class AppTest {
         l.add("Object 5"); // duplicate
 
         assertFalse(l.isEmpty());
-        assertEquals("Object 3",l.get(2));
-        assertEquals(l.get(4),l.get(5)); // Check duplicate value
-        assertEquals(6,l.size());
+        assertTrue(l.contains("Object 3"));
+        assertEquals("Object 3", l.get(2));
+        assertNotEquals(l.get(1), l.get(3));
+        assertEquals(l.get(4), l.get(5)); // Check duplicate value
+        assertEquals(6, l.size());
 
 
         // Removing from the List
         l.remove(2);
 
-        assertEquals("Object 4",l.get(2));
-        assertEquals(5,l.size());
+        assertFalse(l.contains("Object 3"));
+        assertEquals("Object 4", l.get(2));
+        assertEquals(l.get(3), l.get(4)); // Check duplicate value
+        assertEquals(5, l.size());
 
 
         // Clear the List
         l.clear();
 
-        assertEquals(0,l.size());
+        assertEquals(0, l.size());
         assertTrue(l.isEmpty());
     }
 
@@ -53,7 +55,6 @@ class AppTest {
     void map() {
 
         Map<Integer,String> m = new HashMap<>();
-        System.out.println( "Testing!\n" );
 
         // Adding to the Map
         m.put(1, "1st Object");
@@ -61,24 +62,32 @@ class AppTest {
         m.put(3, "3rd Object");
         m.put(4, "4th Object");
         m.put(5, "5th Object");
+        m.put(6, "5th Object");  // Duplicate Value, But different Key
+
+        assertFalse(m.isEmpty());
+        assertEquals(6, m.size());
+        assertTrue(m.containsKey(4));
+        assertFalse(m.containsKey(7)); // Unknown object
+        assertEquals("2nd Object", m.get(2));
+        assertEquals(m.get(6), m.get(5)); // Duplicate Value, But different Key
+        assertNotEquals(m.get(2), m.get(3));
+        assertNotEquals("2nd Object", m.get(3));
+        assertNull(m.get(7));       // Unknown object
+
 
         // Removing from the Map
-        m.remove(2);
+        m.remove(6);
 
-        // Finding object from the Map
-        String getObject = m.get(1);
-        String getObject1 = m.get(4);
-
-        // Iterate through the Map
+        assertFalse(m.containsKey(6));
+        assertNull(m.get(6));
+        assertEquals(5, m.size());
 
 
         // Clear the Map
         m.clear();
 
-        // display
-        System.out.println(getObject);
-        System.out.println(getObject1);
-
+        assertTrue(m.isEmpty());
+        assertEquals(0, m.size());
     }
 
     @Test
@@ -92,23 +101,29 @@ class AppTest {
         boolean added3 = s.add("Obj 3");
         boolean added4 = s.add("Obj 3"); // Duplicate
 
+        assertFalse(s.isEmpty());
+        assertTrue(s.contains("Obj 3"));
+        assertFalse(s.contains("Obj 4"));
+        assertTrue(added3);
+        assertFalse(added4);  // Duplicate
+        assertEquals(3, s.size());
+
+
         // Removing from the Set
         boolean removed = s.remove("Obj 3");
         boolean removed1 = s.remove("Obj 4"); // Unknown object
 
-        // Finding object from the Set
-        boolean isThere =  s.contains("Obj 1");
+        assertTrue(removed);
+        assertFalse(s.contains("Obj 3"));
+        assertTrue(s.contains("Obj 1"));
+        assertFalse(removed1); // Unknown object
+        assertEquals(2, s.size());
 
-
-        // Iterate through the Set
-        for (String element: s) {
-            System.out.println(element);
-        }
 
         // Clear the Set
         s.clear();
 
-        System.out.println(isThere);
-
+        assertTrue(s.isEmpty());
+        assertEquals(0, s.size());
     }
 }
